@@ -1,14 +1,14 @@
 spring:
   profiles:
-    active: dev  # ¿ª·¢Ê±²¿Êğdev£¬ÉÏÏßÔËĞĞÊ±Çë²¿Êğprod
+    active: dev  # å¼€å‘æ—¶éƒ¨ç½²devï¼Œä¸Šçº¿è¿è¡Œæ—¶è¯·éƒ¨ç½²prod
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/vlearncom?useUnicode=true&characterEncoding=utf-8&useSSL=true
-    username: cj  # LinuxÉÏĞÂ°æ MariaDB ²»ÔÊĞírootµÇÂ¼£¬Îª¼æÈİĞÔ£¬ÇëÊ¹ÓÃÆÕÍ¨Êı¾İ¿âÕËºÅ
+    username: cj  # Linuxä¸Šæ–°ç‰ˆ MariaDB ä¸å…è®¸rootç™»å½•ï¼Œä¸ºå…¼å®¹æ€§ï¼Œè¯·ä½¿ç”¨æ™®é€šæ•°æ®åº“è´¦å·
     password: 123
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     show-sql: true
   thymeleaf:
     mode: HTML5
