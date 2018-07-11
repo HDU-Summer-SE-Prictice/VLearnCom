@@ -1,0 +1,14 @@
+spring:
+  profiles:
+    active: dev  # 开发时部署dev，上线运行时请部署prod
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/vlearncom?useUnicode=true&characterEncoding=utf-8&useSSL=true
+    username: cj  # Linux上新版 MariaDB 不允许root登录，为兼容性，请使用普通数据库账号
+    password: 123
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  thymeleaf:
+    mode: HTML5
