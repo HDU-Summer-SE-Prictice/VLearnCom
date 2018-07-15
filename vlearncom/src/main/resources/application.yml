@@ -8,7 +8,7 @@ spring:
     password: 123
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     show-sql: true
   thymeleaf:
-    mode: HTML5
+    mode: LEGACYHTML5 # 若为HTML5则校验很严格，很麻烦
