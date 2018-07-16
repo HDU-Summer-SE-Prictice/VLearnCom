@@ -15,5 +15,4 @@ public class UserController {
         model.addAttribute("username", principal.getName());
         return "user/user";
     }
-
 }

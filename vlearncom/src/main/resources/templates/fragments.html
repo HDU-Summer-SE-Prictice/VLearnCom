@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<nav th:fragment="navigator" class="navbar navbar-default navbar-fixed-top header">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#header-navbar-collapse" aria-expanded="false">
+                <span class="sr-only">V Learn</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <img src="img/logo_03.png">
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="header-navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown ">
+                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                        课程
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="" href="courses/index.html">全部课程</a></li>
+                        <li><a class="" href="courses/index.html?status=preview">即将上线</a></li>
+                        <li><a class="" href="developer/index.html">开发者</a></li>
+                    </ul>
+                </li>
+                <li class="">
+                    <a href="paths/index.html">路径</a>
+                </li>
+                <li class="">
+                    <a href="questions/index.html">讨论区</a>
+                </li>
+                <li class="bootcamp new-nav logo-1111">
+                    <a href="bootcamp/index.html">训练营</a>
+                </li>
+                <li class=" new-nav logo-1111">
+                    <a href="vip/index.html">会员</a>
+                </li>
+            </ul>
+
+            <div class="navbar-right btns">
+                <div class="dropdown navbar-nav" th:if="${#httpServletRequest.remoteUser}">
+                    <a th:href="@{/user}" class="navbar-link">陈俊</a>
+                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <form th:action="@{/logout}" method="post">
+                                <a href="javascript:void(0);" onclick="$(this).parent().submit()">退出登录</a>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+                <div class="btns" th:unless="${#httpServletRequest.remoteUser}">
+                    <a class="btn btn-default navbar-btn sign-in" th:href="@{/login}">登录</a>
+                    <a class="btn btn-default navbar-btn sign-up" href="/register">注册</a>
+                </div>
+            </div>
+
+            <form class="navbar-form navbar-right" action="search" method="get" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="search" autocomplete="off" placeholder="搜索 课程/问答">
+                </div>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div th:fragment="footer" class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 clearfix footer-col">
+                <img src="img/logo_03.png">
+                <div class="footer-slogan">动手做实验，轻松学编程</div>
+                <div class="col-xs-2">
+                    <div class="social-item footer-weixin-item">
+                        <i class="fa fa-weixin"></i>
+                        <div class="footer-weixin">
+                            <img src="img/footer-weixin.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="social-item footer-qq-item">
+                        <i class="fa fa-qq"></i>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="social-item footer-weibo-item">
+                        <a href="#" target="_blank">
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-3 col-md-2 footer-col">
+                <div class="col-title">公司</div>
+                <a href="privacy/index.html" target="_blank">关于我们</a><br>
+                <a href="privacy/index.html" target="_blank">联系我们</a><br>
+                <a href="#" target="_blank">加入我们</a><br>
+                <a href="#" target="_blank">技术博客</a><br>
+            </div>
+            <div class="col-xs-6 col-sm-3 col-md-2 footer-col">
+                <div class="col-title">合作</div>
+                <a href="privacy/index.html" target="_blank">我要投稿</a><br>
+                <a href="labs/index.html" target="_blank">教师合作</a><br>
+                <a href="edu/index.html" target="_blank">高校合作</a><br>
+                <a href="privacy/index.html" target="_blank">友情链接</a>
+            </div>
+            <div class="col-xs-6 col-sm-3 col-md-2 footer-col">
+                <div class="col-title">服务</div>
+                <a href="bootcamp/index.html" target="_blank">实战训练营</a><br>
+                <a href="vip/index.html" target="_blank">会员服务</a><br>
+                <a href="courses/reports.html" target="_blank">实验报告</a><br>
+                <a href="questions/index.html?tag=%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98" target="_blank">常见问题</a><br>
+                <a href="privacy/index.html" target="_blank">隐私条款</a>
+            </div>
+            <div class="col-xs-6 col-sm-3 col-md-2 footer-col">
+                <div class="col-title">学习路径</div>
+                <a href="paths/index.html" target="_blank">Python学习路径</a><br>
+                <a href="paths/index.html" target="_blank">Linux学习路径</a><br>
+                <a href="paths/index.html" target="_blank">大数据学习路径</a><br>
+                <a href="paths/index.html" target="_blank">Java学习路径</a><br>
+                <a href="paths/index.html" target="_blank">PHP学习路径</a><br>
+                <a href="paths/index.html" , target="_blank">全部</a>
+            </div>
+        </div>
+    </div>
+    <div class="text-center copyright">
+        <span>Copyright @2013-2016 在线教育</span>
+        <span class="ver-line"> | </span>
+        <a href="#" target="_blank">蜀ICP备00000000号</a>
+    </div>
+</div>
+</body>
+</html>

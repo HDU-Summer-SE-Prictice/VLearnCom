@@ -15,8 +15,8 @@ FLUSH PRIVILEGES;
 
 创建数据库后启动程序一次，然后杀掉，执行以下命令：
 ```sql
-insert into sys_role(id,authority) values(1,'ROLE_ADMIN');
-insert into sys_role(id,authority) values(2,'ROLE_USER');
+insert into SYS_ROLE(id,authority) values(1,'ROLE_TEACHER');
+insert into SYS_ROLE(id,authority) values(2,'ROLE_STUDENT');
 ```
 
-`ROLE_ADMIN` 和 `ROLE_USER` 若要修改，则需同时修改 WebSecurityConfig.java 的 `hasRole("USER")` 句及 SysUserService.java 的 `save` 函数
+`ROLE_TEACHER` 和 `ROLE_STUDENT` 若要修改，则需同时修改 WebSecurityConfig.java 的 `hasRole("USER")` 句

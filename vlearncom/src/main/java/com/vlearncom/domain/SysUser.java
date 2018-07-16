@@ -1,5 +1,6 @@
 package com.vlearncom.domain;
 
+import javafx.beans.DefaultProperty;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,9 +20,13 @@ public class SysUser implements UserDetails {
     @GeneratedValue
     private Integer id;
 
+    @Column(columnDefinition = "int default 0")
+    private Integer level;
+
     @NotNull
     private String username;
 
+    @NotNull
     private String password;
 
     private String nickname;
@@ -69,6 +74,14 @@ public class SysUser implements UserDetails {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
     }
 
     public String getUsername() {
