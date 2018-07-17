@@ -21,7 +21,7 @@
                 $.ajax({
                     url: "/editor",
                     type: 'POST',
-                    data: 'source=' + Base64.encode($('#source').val()),
+                    data: 'code=' + Base64.encode($('#source').val()),
                     success: function (result) {
                         $("#output").val(result);
                     }

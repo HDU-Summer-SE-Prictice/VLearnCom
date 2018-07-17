@@ -46,7 +46,7 @@ public class HomeController {
         return "courses/index";
     }
 
-    @GetMapping("/questions/index")
+    @GetMapping("/questions/index.html")
     public String questions() {
         return "questions/index";
     }
