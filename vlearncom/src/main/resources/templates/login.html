@@ -1,19 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>登录 | SpringForAll - Spring Security</title>
-    <link href="css/bootstrap.css" rel="stylesheet">
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head(~{::title},~{},~{})">
+    <title>登录虚拟学习社区</title>
 </head>
 
-<body style="background-color: #f1f1f1; padding-bottom: 0">
-
-<!--<div th:insert="~{header :: nav}"></div>-->
+<body>
 <nav th:replace="fragments :: navigator"></nav>
 
 <div class="container" style="margin-top: 60px">
-
     <div class="row" style="margin-top: 100px">
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-primary">
@@ -57,9 +51,8 @@
             </div>
         </div>
     </div>
-
 </div>
 
+<div th:replace="fragments :: footer"></div>
 </body>
-
 </html>

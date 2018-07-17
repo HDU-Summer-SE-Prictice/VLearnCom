@@ -40,4 +40,19 @@ public class HomeController {
             return "redirect:register?success";
         return "redirect:register?error";
     }
+
+    @GetMapping("/courses/index.html")
+    public String courses() {
+        return "courses/index";
+    }
+
+    @GetMapping("/questions/index")
+    public String questions() {
+        return "questions/index";
+    }
+
+    @GetMapping("/editor")
+    public String editor() {
+        return "editor";
+    }
 }

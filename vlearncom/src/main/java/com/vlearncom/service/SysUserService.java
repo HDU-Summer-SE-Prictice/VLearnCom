@@ -34,7 +34,7 @@ public class SysUserService implements UserDetailsService {
         String username = sysUser.getUsername();
         if (sysUserRepository.findByUsername(username) != null) // 已存在
             return null;
-        sysUser.setPassword((new BCryptPasswordEncoder()).encode(sysUser.getPassword()));
+        sysUser.setPassword(passwordEncoder().encode(sysUser.getPassword()));
         return sysUserRepository.save(sysUser);
     }
 

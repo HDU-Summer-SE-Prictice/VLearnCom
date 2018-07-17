@@ -62,8 +62,8 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.springframework.security.oauth</groupId>
-			<artifactId>spring-security-oauth2</artifactId>
+			<groupId>org.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-springsecurity4</artifactId>
 		</dependency>
 
 		<!--为支持 thymeleaf 的 LEGACYHTML5 解析模式-->
