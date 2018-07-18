@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head(~{::title},~{::style},~{})">
+    <title>我的消息</title>
+    <style type="text/css">
+        .main {
+            margin-top: 70px;
+        }
+    </style>
+</head>
+
+<body>
+<nav th:replace="fragments :: navigator"></nav>
+
+<div class="container main" >
+    <div class="row">
+        <div class="col-sm-4">
+            <p><a th:href="@{/message}">收信<span class="glyphicon glyphicon-envelope"></span></a></p>
+            <p><a th:href="@{/message/writing}">写信<span class="glyphicon glyphicon-pencil"></span></a></p>
+    </div>
+    </div>
+    <div class="col-md-5">
+        <div class="col-md-2" th:each="peer:${peers}">
+            <p th:value="peer.name">
+            </p>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="col-md-10">
+            <div th:if="${param.peer}">
+                <div>我与<span></span>的私信</div>
+            </div>
+            <div>
+                <textarea role="60" cols="100"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments :: footer"></div>
+</body>
+</html>

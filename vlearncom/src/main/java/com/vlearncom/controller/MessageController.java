@@ -20,6 +20,11 @@ public class MessageController {
     public String message(@AuthenticationPrincipal Principal principal, Model model) {
         SysUser me = sysUserService.findByUsername(principal.getName());
         model.addAttribute("peers", me.getPeers());
-        return "message";
+        return "message/message";
+    }
+    @GetMapping("/message/writing")
+    public  String  writing()
+    {
+        return"message/writing";
     }
 }

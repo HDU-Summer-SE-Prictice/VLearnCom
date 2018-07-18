@@ -26,7 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/", "/courses/*", "/questions", "/editor").permitAll()
-                .antMatchers("/user/**", "/questions/add").hasAnyRole("TEACHER,STUDENT")
+                .antMatchers("/user/**","/message/*", "/questions/add").hasAnyRole("TEACHER,STUDENT")
                 .and()
                 .formLogin().loginPage("/login").defaultSuccessUrl("/home")
                 .and()

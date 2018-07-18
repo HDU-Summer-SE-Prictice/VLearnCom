@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head(~{::title},~{::style},~{})">
+    <title>写信</title>
+    <style type="text/css">
+        .main {
+            margin-top: 70px;
+        }</style>
+</head>
+
+<body>
+<nav th:replace="fragments :: navigator"></nav>
+
+<div class="container main">
+    <div class="row">
+        <div class="col-sm-4">
+            <p><a th:href="@{/message}">收信<span class="glyphicon glyphicon-envelope"></span></a></p>
+            <p><a th:href="@{/message/writing}">写信<span class="glyphicon glyphicon-pencil"></span></a></p>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <form role="form">
+            <div class="form-group">
+                <label for="name">收件人</label>
+                <input type="text" class="form-control" id="name" placeholder="请输入收件人账号">
+            </div>
+            <div class="form-group">
+                <label for="inputcontent">内容</label>
+                <textarea rows="10" cols="100" id="inputcontent"></textarea>
+
+            </div>
+
+            <button type="submit" class="btn btn-default">提交</button>
+        </form>
+
+    </div>
+</div>
+
+
+
+        <div th:replace="fragments :: footer"></div>
+</body>
+</html>
