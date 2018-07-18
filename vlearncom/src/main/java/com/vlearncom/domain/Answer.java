@@ -18,7 +18,7 @@ public class Answer {
     @ManyToOne
     private Question question;
 
-    private Date time;
+    private Date birth;
 
     private String content;
 
@@ -46,12 +46,12 @@ public class Answer {
         this.question = question;
     }
 
-    public Date getTime() {
-        return time;
+    public Date getBirth() {
+        return birth;
     }
 
-    public void setTime(Date time) {
-        this.time = time;
+    public void setBirth(Date birth) {
+        this.birth = birth;
     }
 
     public String getContent() {

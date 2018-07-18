@@ -1,5 +1,6 @@
 package com.vlearncom.service;
 
+import com.vlearncom.config.Constants;
 import com.vlearncom.dao.SysUserRepository;
 import com.vlearncom.domain.SysRole;
 import com.vlearncom.domain.SysUser;
@@ -37,6 +38,7 @@ public class SysUserService implements UserDetailsService {
             return null;
         sysUser.setPassword(passwordEncoder().encode(sysUser.getPassword()));
         sysUser.setLevel(0);
+        sysUser.setHeadicon(Constants.DEFAULT_HEADICON);
         return sysUserRepository.save(sysUser);
     }
 

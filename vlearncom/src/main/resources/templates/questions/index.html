@@ -11,77 +11,45 @@
     <div class="row">
         <div class="col-md-9 layout-body">
             <div class="content">
-                <ul class="nav nav-tabs question-types" role="tablist">
-                    <li role="presentation" class="active">
-                        <a href="#all" aria-controls="all" role="tab" toggle="tab">全部</a>
-                    </li>
-
-                    <li role="presentation">
-                        <a href="#course" aria-controls="course" role="tab" toggle="tab">课程问答</a>
-                    </li>
-
-                    <li role="presentation">
-                        <a href="#discussion" aria-controls="discussion" role="tab" toggle="tab">交流讨论</a>
-                    </li>
-
-                    <li role="presentation">
-                        <a href="#sharing" aria-controls="sharing" role="tab" toggle="tab">技术分享</a>
-                    </li>
-
-                    <li role="presentation">
-                        <a href="#labreport" aria-controls="labreport" role="tab" toggle="tab">实验报告</a>
-                    </li>
-
-                    <li role="presentation">
-                        <a href="#notice" aria-controls="notice" role="tab" toggle="tab">站内公告</a>
-                    </li>
-
-                    <div class="question-sort">
-                        <a class="active" href="#newest">最新</a></li>
-                        /
-                        <a href="#hot">最热</a></li>
-                        /
-                        <a href="#unanswered">未回复</a></li>
-                    </div>
-                </ul>
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active">
                         <ul class="row question-items">
                             <li class="question-item" th:each="quest:${questions}">
                                 <div class="col-md-10">
                                     <div class="col-sm-2 question-item-author">
-                                        <div class="user-avatar ">
-                                            <a class="avatar" href="../user/13/study.html" target="_blank">
-                                                <img src="https://dn-simplecloud.xxxxxx.com/gravataradmin.png?imageView2/1/w/100/h/100">
+                                        <div class="user-avatar" th:object="${quest.author}">
+                                            <a class="avatar" th:href="'/user/' + *{id}"
+                                               target="_blank">
+                                                <img th:src="*{headicon}">
                                             </a>
                                         </div>
                                     </div>
                                     <div class="col-sm-10">
                                         <h4>
-                                            <img src="/img/topQuestion.png">
-                                            <a class="question-item-title" href="show.html" target="_blank"
-                                               th:text="${quest.content}"></a>
+                                            <a class="question-item-title" th:href="'/questions/show/' + ${quest.id}"
+                                               target="_blank" th:text="${quest.title}"></a>
                                         </h4>
                                         <div class="question-item-summary">
-                                            <div class="user-username ">
-                                                <a class="avatar" href="../user/13/study.html" target="_blank"
-                                                   th:text="${quest.author.username}">
+                                            <div class="user-username" th:object="${quest.author}">
+                                                <a class="avatar" th:href="'/user/' + *{id}"
+                                                   target="_blank"
+                                                   th:text="*{username}">
                                                 </a>
-                                                <span class="user-level" th:text="${quest.author.level}"></span>
+                                                <span class="user-level" th:text="*{level}"></span>
                                             </div>
 
-                                            <!--<span class="question-item-date"-->
-                                                  <!--th:text="${quest.answers[quest.answers.size()-1].time}">3小时前</span>-->
-
-                                            最后回复 <span class="question-item-date">
-                                                        <div class="user-username ">
-                                                            <a class="username" href="/user/256544" target="_blank"
-                                                               th:text="${quest.author.username}">
-                                                            </a>
-                                                            <span class="user-level"
-                                                                  th:text="${quest.author.level}"></span>
-                                                        </div>
-                                                     </span>
+                                            <span th:if="${quest.answers.size()>0}" class="question-item-date"
+                                                  th:text="${quest.answers[quest.answers.size()-1].birth}">3小时前</span>
+                                            最后回复
+                                            <span class="question-item-date" th:if="${quest.answers.size()>0}"
+                                                  th:object="${quest.answers[quest.answers.size()-1].author}">
+                                                <div class="user-username">
+                                                    <a class="username" th:href="'/user/' + *{id}" target="_blank"
+                                                       th:text="*{username}">
+                                                    </a>
+                                                    <span class="user-level" th:text="*{level}"></span>
+                                                </div>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -133,7 +101,7 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container" th:if="${#httpServletRequest.remoteUser}">
     <p><span class="glyphicon glyphicon-pencil"></span>发表新帖</p>
     <form class="form-horizontal" action="/questions/add" method="post">
         <div class="form-group">
@@ -151,7 +119,7 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="input-group col-md-4 col-md-offset-0 col-xs-12 ">
+            <div class="input-group-sm col-md-4 col-md-offset-2 col-xs-12 ">
                 <button type="submit" class="btn btn-primary btn-block">发表</button>
             </div>
         </div>
