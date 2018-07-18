@@ -18,8 +18,7 @@ public class HomeController {
     SysRoleService sysRoleService;
 
     @GetMapping({"/", "/index"})
-    public String root(Model model) {
-        model.addAttribute("roles", sysRoleService.findAll());
+    public String index() {
         return "index";
     }
 
@@ -36,19 +35,14 @@ public class HomeController {
 
     @PostMapping("/register")
     public String doRegister(SysUser sysUser) {
-        if (sysUserService.save(sysUser) != null)
-            return "redirect:register?success";
-        return "redirect:register?error";
+        if (sysUserService.save(sysUser) == null)
+            return "redirect:register?error";
+        return "redirect:register?success";
     }
 
     @GetMapping("/courses/index.html")
     public String courses() {
         return "courses/index";
-    }
-
-    @GetMapping("/questions/index.html")
-    public String questions() {
-        return "questions/index";
     }
 
     @GetMapping("/editor")

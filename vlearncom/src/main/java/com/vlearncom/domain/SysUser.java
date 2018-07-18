@@ -1,6 +1,5 @@
 package com.vlearncom.domain;
 
-import javafx.beans.DefaultProperty;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -32,8 +31,19 @@ public class SysUser implements UserDetails {
     private String nickname;
 
     /**
+     * 与之有对话交流的人
+     */
+    @ManyToMany
+    private List<SysUser> peers;
+
+    /**
+     * 此人发的帖子
+     */
+    @OneToMany(mappedBy = "author")
+    private List<Question> questions;
+
+    /**
      * 一个用户可以有多个身份。若只允许一个身份，则应为ManyToOne
-     * TODO: 若手动删除 sys_user 表里的一条数据，sys_user_roles 中对应该用户的条目并不会自动删除。请实现自动删除
      */
     @ManyToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.EAGER)
     private List<SysRole> roles;
@@ -106,6 +116,14 @@ public class SysUser implements UserDetails {
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
+    }
+
+    public List<SysUser> getPeers() {
+        return peers;
+    }
+
+    public void setPeers(List<SysUser> peers) {
+        this.peers = peers;
     }
 
     public List<SysRole> getRoles() {

@@ -65,7 +65,7 @@
                     <a href="/paths/index.html">路径</a>
                 </li>
                 <li class="">
-                    <a href="/questions/index.html">讨论区</a>
+                    <a th:href="@{/questions}">讨论区</a>
                 </li>
                 <li class="">
                     <a href="/editor">在线编程</a>
@@ -78,9 +78,10 @@
             <div class="navbar-right navbar">
                 <ul class="navbar-nav mr-auto" th:if="${#httpServletRequest.remoteUser}">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" th:href="@{/user}" sec:authentication="name" id="dropdown03"
+                        <a class="nav-link dropdown-toggle" th:href="@{/home}" sec:authentication="name" id="dropdown03"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
                         <div class="dropdown-menu" aria-labelledby="dropdown03">
+                            <a href="/message" class="dropdown-item navbar-link">我的消息</a>
                             <form th:action="@{/logout}" method="post">
                                 <input type="submit" class="dropdown-item navbar-link" value="注销"/>
                             </form>
