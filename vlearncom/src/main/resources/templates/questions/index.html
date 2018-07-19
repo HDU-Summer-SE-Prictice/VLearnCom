@@ -18,9 +18,9 @@
                                 <div class="col-md-10">
                                     <div class="col-sm-2 question-item-author">
                                         <div class="user-avatar" th:object="${quest.author}">
-                                            <a class="avatar" th:href="'/user/' + *{id}"
+                                            <a class="avatar" th:href="'/user/' + *{id} + '/study'"
                                                target="_blank">
-                                                <img th:src="*{headicon}">
+                                                <img th:src="*{headIcon}">
                                             </a>
                                         </div>
                                     </div>
@@ -31,7 +31,7 @@
                                         </h4>
                                         <div class="question-item-summary">
                                             <div class="user-username" th:object="${quest.author}">
-                                                <a class="avatar" th:href="'/user/' + *{id}"
+                                                <a class="avatar" th:href="'/user/' + *{id} + '/study'"
                                                    target="_blank"
                                                    th:text="*{username}">
                                                 </a>
@@ -44,7 +44,7 @@
                                             <span class="question-item-date" th:if="${quest.answers.size()>0}"
                                                   th:object="${quest.answers[quest.answers.size()-1].author}">
                                                 <div class="user-username">
-                                                    <a class="username" th:href="'/user/' + *{id}" target="_blank"
+                                                    <a class="username" th:href="'/user/' + *{id} + '/study'" target="_blank"
                                                        th:text="*{username}">
                                                     </a>
                                                     <span class="user-level" th:text="*{level}"></span>

@@ -40,6 +40,11 @@ public class QuestionService {
         return questionRepository.save(question);
     }
 
+    public Question view(Question question) {
+        question.setNview(question.getNview()+1);
+        return questionRepository.save(question);
+    }
+
     public Question save(Question question) {
         return questionRepository.save(question);
     }

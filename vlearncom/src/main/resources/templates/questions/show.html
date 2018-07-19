@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments :: head(~{::title},~{},~{})">
-    <title>th:</title>
+    <title th:text="${quest.title}"></title>
 </head>
 
 <body>
@@ -20,13 +20,13 @@
 
                 <div class="question-author" th:object="${quest.author}">
                     <div class="user-avatar ">
-                        <a class="avatar" th:href="'/user/' + *{id}" target="_blank">
-                            <img th:src="*{headicon}">
+                        <a class="avatar" th:href="'/user/' + *{id} + '/study'" target="_blank">
+                            <img th:src="*{headIcon}">
                         </a>
                     </div>
 
                     <div class="user-username ">
-                        <a class="username" th:href="'/user/' + *{id}" th:text="*{username}" target="_blank">
+                        <a class="username" th:href="'/user/' + *{id} + '/study'" th:text="*{username}" target="_blank">
                         </a>
                         <span class="user-level" th:text="*{level}"></span>
                     </div>
@@ -51,8 +51,8 @@
                     <div class="answer-item">
                         <div class="answer-head">
                             <div class="user-avatar" th:object="${answer.author}">
-                                <a class="avatar" th:href="'/user/' + *{id}" target="_blank">
-                                    <img th:src="*{headicon}">
+                                <a class="avatar" th:href="'/user/' + *{id} + '/study'" target="_blank">
+                                    <img th:src="*{headIcon}">
                                 </a>
                             </div>
                         </div>
@@ -60,7 +60,7 @@
                         <div class="answer-detail">
                             <span class="comment-reply">
                                 <div class="user-username" th:object="${answer.author}">
-                                    <a class="username" th:href="'/user/' + *{id}" th:text="*{username}"
+                                    <a class="username" th:href="'/user/' + *{id} + '/study'" th:text="*{username}"
                                        target="_blank"></a>
                                     <span class="user-level" th:text="*{level}"></span>
                                 </div>

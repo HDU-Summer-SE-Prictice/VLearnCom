@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 /**
- * TODO: 实现 1.authority不重复； 2.用户可根据 authority 创建一个 SysRole，其 id 和数据库中id相同
+ * TODO: 实现 1.authority不重复
  */
 @Entity
 public class SysRole implements GrantedAuthority {

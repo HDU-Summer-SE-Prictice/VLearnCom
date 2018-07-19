@@ -25,12 +25,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/user/*", "/courses/*", "/questions", "/questions/show", "/editor").permitAll()
+                .antMatchers("/", "/404", "/user/*", "/courses/index", "/questions", "/questions/show", "/editor", "/privacy").permitAll()
                 .antMatchers("/home", "/questions/add").hasAnyRole("TEACHER,STUDENT")
+                .antMatchers("/courses/add").hasAnyRole("TEACHER")
                 .and()
-                .formLogin().loginPage("/login").defaultSuccessUrl("/home")
+                .formLogin().loginPage("/login")
                 .and()
-                .logout().logoutUrl("/logout").logoutSuccessUrl("/login");
+                .logout().logoutUrl("/logout");
     }
 
     /**

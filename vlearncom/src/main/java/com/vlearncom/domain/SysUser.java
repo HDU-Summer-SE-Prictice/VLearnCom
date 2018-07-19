@@ -30,7 +30,19 @@ public class SysUser implements UserDetails {
 
     private String nickname;
 
-    private String headicon;
+    private String headIcon;
+
+    /**
+     * 若此人身份是老师，则此属性起效
+     */
+    @OneToMany(mappedBy = "teacher")
+    private List<Course> openCourses;
+
+    /**
+     * 若此人身份是学生，则此属性起效
+     */
+    @ManyToMany
+    private List<Course> learnCourses;
 
     /**
      * 与之有对话交流的人
@@ -120,12 +132,28 @@ public class SysUser implements UserDetails {
         this.nickname = nickname;
     }
 
-    public String getHeadicon() {
-        return headicon;
+    public String getHeadIcon() {
+        return headIcon;
     }
 
-    public void setHeadicon(String headicon) {
-        this.headicon = headicon;
+    public void setHeadIcon(String headIcon) {
+        this.headIcon = headIcon;
+    }
+
+    public List<Course> getOpenCourses() {
+        return openCourses;
+    }
+
+    public void setOpenCourses(List<Course> openCourses) {
+        this.openCourses = openCourses;
+    }
+
+    public List<Course> getLearnCourses() {
+        return learnCourses;
+    }
+
+    public void setLearnCourses(List<Course> learnCourses) {
+        this.learnCourses = learnCourses;
     }
 
     public List<SysUser> getPeers() {

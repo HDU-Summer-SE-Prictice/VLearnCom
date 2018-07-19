@@ -17,8 +17,9 @@ public class UserController {
         return "home";
     }
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/user/{id}/study")
     public String user(@PathVariable("id") Integer id, Model model) {
-        return "user";
+
+        return "user/study";
     }
 }

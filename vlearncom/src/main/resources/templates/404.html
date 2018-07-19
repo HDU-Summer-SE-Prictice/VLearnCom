@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head(~{::title},~{},~{})">
+    <title>页面未找到！</title>
+</head>
+
+<body>
+<nav th:replace="fragments :: navigator"></nav>
+
+<div class="container layout layout-margin-top">
+    <div class="row">
+        <h1><b>404</b> 页面未找到。。。</h1>
+    </div>
+</div>
+
+<div th:replace="fragments :: footer"></div>
+</body>
+</html>

@@ -35,8 +35,7 @@ public class QuestionController {
         Question question = questionService.findById(id);
         if (question == null)
             return "404";
-        question.setNview(question.getNview()+1);
-        if (questionService.save(question) == null)
+        if (questionService.view(question) == null)
             return "redirect:/questions?error";
         model.addAttribute("quest", question);
         return "questions/show";

@@ -11,4 +11,4 @@ spring:
       ddl-auto: update
     show-sql: true
   thymeleaf:
-    mode: LEGACYHTML5 # 若为HTML5则校验很严格，很麻烦
+    mode: HTML
