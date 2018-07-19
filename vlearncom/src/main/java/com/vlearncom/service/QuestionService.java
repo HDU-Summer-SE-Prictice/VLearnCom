@@ -20,6 +20,10 @@ public class QuestionService {
     @Autowired
     QuestionRepository questionRepository;
 
+    public Question findById(Integer id) {
+        return questionRepository.findById(id).orElse(null);
+    }
+
     public List<Question> findAll() {
         return questionRepository.findAll();
     }
@@ -33,6 +37,10 @@ public class QuestionService {
 
         question.setAuthor(user);
         question.setNview(0);
+        return questionRepository.save(question);
+    }
+
+    public Question save(Question question) {
         return questionRepository.save(question);
     }
 }

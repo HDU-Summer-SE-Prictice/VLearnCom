@@ -2,6 +2,7 @@ package com.vlearncom.domain;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Message {
@@ -18,6 +19,9 @@ public class Message {
     private Date time;
 
     private String content;
+
+
+
 
     public Integer getId() {
         return id;
@@ -58,4 +62,6 @@ public class Message {
     public void setContent(String content) {
         this.content = content;
     }
+
+
 }

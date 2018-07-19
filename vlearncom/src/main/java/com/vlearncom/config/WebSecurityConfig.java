@@ -20,19 +20,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      * 退出登录的地址为 "/logout"，退出成功后跳转到页面 "/login"
      * 默认启用 CSRF
      */
-    @Override
+   @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/courses/*", "/questions", "/editor").permitAll()
-                .antMatchers("/user/**","/message/*", "/questions/add").hasAnyRole("TEACHER,STUDENT")
+                .antMatchers("/", "/404", "/user/*", "/courses/*", "/questions", "/questions/show", "/editor").permitAll()
+                .antMatchers("/home", "/questions/add").hasAnyRole("TEACHER,STUDENT")
                 .and()
                 .formLogin().loginPage("/login").defaultSuccessUrl("/home")
                 .and()
                 .logout().logoutUrl("/logout").logoutSuccessUrl("/login");
     }
-
     /**
      * 添加 UserDetailsService， 实现自定义登录校验
      */

@@ -14,29 +14,27 @@
 
 <div class="container main" >
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-4  ">
             <p><a th:href="@{/message}">收信<span class="glyphicon glyphicon-envelope"></span></a></p>
             <p><a th:href="@{/message/writing}">写信<span class="glyphicon glyphicon-pencil"></span></a></p>
-    </div>
-    </div>
-    <div class="col-md-5">
-        <div class="col-md-2" th:each="peer:${peers}">
-            <p th:value="peer.name">
-            </p>
-        </div>
-    </div>
+         </div>
+         <div class="col-sm-8">
+             <div class="thumbnail">
+          <img src="img/envolope.PNG">
+        <div class="caption">
+            <h3>你还未收到私信</h3>
+            <p>
+                <a th:href="@{/message/writing}" class="btn btn-primary" role="button">
+                    马上写信
+                </a>
 
-    <div class="col-md-6">
-        <div class="col-md-10">
-            <div th:if="${param.peer}">
-                <div>我与<span></span>的私信</div>
-            </div>
-            <div>
-                <textarea role="60" cols="100"></textarea>
-            </div>
         </div>
+         </div>
+         </div>
     </div>
 </div>
+
+
 
 <div th:replace="fragments :: footer"></div>
 </body>

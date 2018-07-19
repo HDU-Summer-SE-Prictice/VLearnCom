@@ -30,6 +30,8 @@ public class SysUser implements UserDetails {
 
     private String nickname;
 
+    private String headicon;
+
     /**
      * 与之有对话交流的人
      */
@@ -118,12 +120,28 @@ public class SysUser implements UserDetails {
         this.nickname = nickname;
     }
 
+    public String getHeadicon() {
+        return headicon;
+    }
+
+    public void setHeadicon(String headicon) {
+        this.headicon = headicon;
+    }
+
     public List<SysUser> getPeers() {
         return peers;
     }
 
     public void setPeers(List<SysUser> peers) {
         this.peers = peers;
+    }
+
+    public List<Question> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
     }
 
     public List<SysRole> getRoles() {
