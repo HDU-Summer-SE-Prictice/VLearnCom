@@ -30,12 +30,7 @@ public class QuestionService {
 
     public Question addQuestion(Question question) {
         question.setBirth(new Date());
-
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        UserDetails userDetails = (UserDetails) principal;
-        SysUser user = sysUserService.findByUsername(userDetails.getUsername());
-
-        question.setAuthor(user);
+        question.setAuthor(sysUserService.getCurrentUser());
         question.setNview(0);
         return questionRepository.save(question);
     }

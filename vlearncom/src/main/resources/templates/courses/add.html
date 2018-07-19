@@ -8,6 +8,9 @@
 <nav th:replace="fragments :: navigator"></nav>
 
 <div class="container layout layout-margin-top">
+    <div class="row" th:if="${param.error}">
+        <p style="text-align: center" class="text-danger">创建课程失败!</p>
+    </div>
     <form class="form-horizontal" action="/courses/add" method="post">
         <div class="form-group">
             <label class="col-md-2 control-label">课程名称</label>
@@ -23,12 +26,12 @@
                 <textarea name="description" rows="20" cols="120"></textarea>
             </div>
         </div>
-        <div class="form-group">
-            <label class="col-md-2 control-label">课程logo</label>
-            <div class="col-md-10">
-                <input type="file" multiple name="icon">
-            </div>
-        </div>
+        <!--<div class="form-group">-->
+            <!--<label class="col-md-2 control-label">课程logo</label>-->
+            <!--<div class="col-md-10">-->
+                <!--<input type="file" multiple name="icon">-->
+            <!--</div>-->
+        <!--</div>-->
         <!--<div class="form-group">-->
             <!--<label class="col-md-2 control-label">上传课件</label>-->
             <!--<div class="col-md-10">-->

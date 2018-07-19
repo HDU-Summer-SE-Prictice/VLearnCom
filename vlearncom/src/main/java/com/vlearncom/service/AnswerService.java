@@ -19,11 +19,7 @@ public class AnswerService {
     SysUserService sysUserService;
 
     public Answer addToQuestion(Answer answer, Question question) {
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        UserDetails userDetails = (UserDetails) principal;
-        SysUser user = sysUserService.findByUsername(userDetails.getUsername());
-
-        answer.setAuthor(user);
+        answer.setAuthor(sysUserService.getCurrentUser());
         answer.setQuestion(question);
         answer.setBirth(new Date());
 

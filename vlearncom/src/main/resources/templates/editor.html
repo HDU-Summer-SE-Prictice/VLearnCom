@@ -1,27 +1,16 @@
 <!DOCTYPE html>
 <html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments :: head(~{::title},~{::style},~{::script})">
+<head th:replace="fragments :: head(~{::title},~{},~{::script})">
     <title>在线编程</title>
-    <style type="text/css">
-        /*.navbar-banner {*/
-        /*background: url("/img/homepage-bg.png");*/
-        /*background-size: cover;*/
-        /*backgtound-repeat: no-repeat;*/
-        /*}*/
-
-        textarea {
-            margin-bottom: 80px;
-        }
-    </style>
-    <script type="text/javascript" src="/js/utils.js"></script>
-    <script type="text/javascript" src="/js/jquery-3.3.1.js"></script>
     <script type="text/javascript">
         $(function () {
             $('#run').click(function () {
                 $.ajax({
                     url: "/editor",
                     type: 'POST',
-                    data: 'code=' + Base64.encode($('#source').val()),
+                    data: {
+                        code: $('#source').val()
+                    },
                     success: function (result) {
                         $("#output").val(result);
                     }
@@ -35,19 +24,15 @@
 <nav th:replace="fragments :: navigator"></nav>
 
 <div class="navbar-banner layout-no-margin-top">
-    <div class="banner-container">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-7">
-                    <textarea id="source" rows="30" cols="130"></textarea>
-                </div>
-                <div class="col-md-1">
-                    <input type="button" id="run" value="Run">
-                </div>
-                <div class="col-md-4">
-                    <textarea id="output" rows="30" cols="80"></textarea>
-                </div>
-            </div>
+    <div class="row">
+        <div class="col-md-7">
+            <textarea id="source" rows="30" cols="130"></textarea>
+        </div>
+        <div class="col-md-1">
+            <input type="button" id="run" value="Run">
+        </div>
+        <div class="col-md-4">
+            <textarea id="output" rows="30" cols="80"></textarea>
         </div>
     </div>
 </div>
